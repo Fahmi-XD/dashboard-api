@@ -40,7 +40,8 @@ app.post('/api/reset', async (req, res) => {
     let trial;
     trial = await JSON.parse(readFileSync('./database.json', 'utf-8'));
     await Object.keys(trial).map(key => {
-        trial[key] = 0;
+        trial[key].views = 0;
+        trial[key].value = 0;
     });
     await writeFileSync('./database.json', JSON.stringify(trial));
     res.json({
@@ -52,15 +53,13 @@ app.post('/api/reset', async (req, res) => {
 
 // ENDPOINT UNTUK MENAMBAH JUMLAH HIT DARI CLIENT
 app.post('/api/hit', middleware, async (req, res) => {
-    const { types, nilai } = req.query;
-    const nilaiA = nilai ? 'reset' : 1;
+    const { types, value } = req.query;
     let trial;
     trial = await JSON.parse(readFileSync('./database.json', 'utf-8'));
-    if (typeof nilaiA == 'string') {
-        trial[types] = 0;
-    } else {
-        trial[types] += parseInt(nilaiA);
+    if (value) {
+        trial[types].value += 1;
     }
+    trial[types].views += 1;
     await writeFileSync('./database.json', JSON.stringify(trial));
     res.json({
         status: 200,
