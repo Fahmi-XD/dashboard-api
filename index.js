@@ -23,7 +23,7 @@ const middleware = (req, res, next) => {
 };
 
 // ENDPOINT UNTUK MENGAMBIL JUMLAH HIT DARI SERVER
-app.get('/api/data', async (req, res) => {
+app.get('/api/get-data', async (req, res) => {
     let trial;
     trial = await JSON.parse(readFileSync('./database.json', 'utf-8'));
     res.json({

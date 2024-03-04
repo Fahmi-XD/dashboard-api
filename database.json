@@ -1,22 +1,22 @@
 {
     "web1": {
         "views": 0,
-        "value": 0,
+        "value": 0
     },
     "web2": {
         "views": 0,
-        "value": 0,
+        "value": 0
     },
     "web3": {
         "views": 0,
-        "value": 0,
+        "value": 0
     },
     "web4": {
         "views": 0,
-        "value": 0,
+        "value": 0
     },
     "web5": {
         "views": 0,
-        "value": 0,
-    },
+        "value": 0
+    }
 }
